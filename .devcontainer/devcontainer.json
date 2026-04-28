@@ -24,7 +24,9 @@
         "ms-azuretools.vscode-docker",
         "nrwl.angular-console",
         "msjsdiag.vscode-react-native",
-        "expo.vscode-expo-tools"
+        "expo.vscode-expo-tools",
+        "astro-build.astro-vscode",
+        "vscjava.vscode-java-pack"
       ]
     }
   }
