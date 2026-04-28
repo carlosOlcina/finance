@@ -1,22 +1,22 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node-postgres
 {
   "name": "Finance devcontainer",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:4-22-trixie",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "features": {
     "ghcr.io/devcontainers-extra/features/expo-cli:1": {},
+    "ghcr.io/devcontainers-extra/features/gradle-sdkman:2": {},
     "ghcr.io/devcontainers-extra/features/nx-npm:1": {},
     "ghcr.io/devcontainers-extra/features/pnpm:2": {}
   },
 
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [4321],
+  "forwardPorts": [3000, 4321],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "pnpm install --frozen-lockfile",
+  "postCreateCommand": "pnpm install",
 
-  // Configure tool-specific properties.
   "customizations": {
     "vscode": {
       "extensions": [
