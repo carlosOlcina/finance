@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "Node.js & TypeScript",
+  "name": "Finance devcontainer",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/typescript-node:4-22-trixie",
   "features": {
@@ -19,10 +19,10 @@
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
-      "plugins": [
+      "extensions": [
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-docker",
-        "nx-console.console",
+        "nrwl.angular-console",
         "msjsdiag.vscode-react-native",
         "expo.vscode-expo-tools"
       ]
