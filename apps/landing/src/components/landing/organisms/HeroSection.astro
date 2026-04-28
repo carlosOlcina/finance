@@ -1,0 +1,96 @@
+---
+import type { HeroSplitItem, MarkerItem } from '../../../data/landingContent';
+import ActionLink from '../atoms/ActionLink.astro';
+import Eyebrow from '../atoms/Eyebrow.astro';
+import TagPill from '../atoms/TagPill.astro';
+import MarkerCard from '../molecules/MarkerCard.astro';
+import SplitRow from '../molecules/SplitRow.astro';
+
+interface Props {
+  repoUrl: string;
+  releasesUrl: string;
+  markers: MarkerItem[];
+  heroBuckets: HeroSplitItem[];
+  heroMethods: HeroSplitItem[];
+}
+
+const { repoUrl, releasesUrl, markers, heroBuckets, heroMethods } = Astro.props;
+---
+
+<section class="mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:pb-20 lg:pt-16">
+  <div class="max-w-3xl">
+    <TagPill label="Open source / APK en GitHub" variant="badge" />
+    <h1 class="font-display mt-6 max-w-4xl text-5xl font-semibold leading-[0.94] tracking-[-0.05em] text-[var(--text-100)] md:text-7xl">
+      Tu dinero deja de ser un numero y empieza a tener destino.
+    </h1>
+    <p class="mt-6 max-w-2xl text-base leading-8 text-[var(--text-200)] md:text-lg">
+      Finance convierte cada entrada en un sistema claro de huchas: inversion, quedadas, colchon o lo que tu definas. Reparte por porcentajes y cantidades fijas, descuenta cada gasto desde una hucha concreta y mira cuanto queda en cada cuenta o en efectivo sin conectar ningun banco.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <ActionLink href={repoUrl} label="Ver el repositorio" variant="primary" external />
+      <ActionLink href="#demo" label="Ver la demo" variant="outline" />
+    </div>
+
+    <div class="mt-5 flex flex-wrap gap-3 text-sm text-[var(--text-300)]">
+      <TagPill label="Sin integraciones bancarias" />
+      <TagPill label="Hecha para uso diario" />
+      <TagPill label="Distribucion desde GitHub Releases" />
+    </div>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      {markers.map((marker) => (
+        <MarkerCard item={marker} />
+      ))}
+    </div>
+  </div>
+
+  <aside class="relative lg:pt-8">
+    <div class="absolute -left-4 top-16 hidden h-24 w-24 rounded-full border border-[var(--line)] bg-white/45 lg:block"></div>
+    <div class="relative overflow-hidden rounded-[2.2rem] border border-[var(--line)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-soft)] backdrop-blur lg:p-7">
+      <div class="flex items-center justify-between">
+        <div>
+          <Eyebrow text="Vista editorial" />
+          <h2 class="font-display mt-3 text-3xl font-semibold leading-tight text-[var(--text-100)]">Un excel automatico, pero con mucho mejor criterio visual.</h2>
+        </div>
+        <ActionLink href={releasesUrl} label="APK" variant="surface" size="compact" external />
+      </div>
+
+      <p class="mt-5 max-w-xl text-sm leading-7 text-[var(--text-300)]">
+        Sin sincronizaciones opacas ni automatismos inflados. Solo una estructura clara para repartir entradas, registrar gastos con contexto y saber donde sigue el dinero en cada momento.
+      </p>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-[1.05fr_0.95fr]">
+        <div class="rounded-[1.8rem] border border-[var(--line)] bg-white p-5 shadow-[0_18px_40px_rgba(92,67,40,0.08)] md:rotate-[-2deg]">
+          <Eyebrow text="Entrada general" tone="muted" size="compact" />
+          <p class="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--text-100)]">1.650 EUR</p>
+          <div class="mt-5 space-y-3">
+            {heroBuckets.map((bucket) => (
+              <SplitRow item={bucket} />
+            ))}
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="rounded-[1.8rem] border border-[var(--line)] bg-[var(--accent-soft)] p-5">
+            <Eyebrow text="Gasto atribuido" tone="accent-strong" size="compact" />
+            <p class="mt-3 text-lg font-semibold text-[var(--text-100)]">Cena del viernes</p>
+            <div class="mt-4 space-y-2 text-sm text-[var(--text-200)]">
+              <TagPill label="Sale de Quedadas" variant="accent" className="block" />
+              <TagPill label="Pagado con Tarjeta diaria" variant="accent" className="block" />
+            </div>
+          </div>
+
+          <div class="rounded-[1.8rem] border border-[var(--line)] bg-[var(--highlight-soft)] p-5 md:rotate-[2deg]">
+            <Eyebrow text="Donde esta el dinero" tone="muted-strong" size="compact" />
+            <div class="mt-4 space-y-3">
+              {heroMethods.map((method) => (
+                <SplitRow item={method} variant="light" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>

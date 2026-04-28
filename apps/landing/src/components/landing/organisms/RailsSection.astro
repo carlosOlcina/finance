@@ -1,0 +1,28 @@
+---
+import type { RailItem } from '../../../data/landingContent';
+import Eyebrow from '../atoms/Eyebrow.astro';
+import RailCard from '../molecules/RailCard.astro';
+
+interface Props {
+  rails: RailItem[];
+}
+
+const { rails } = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
+  <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+    <div class="rounded-[2rem] border border-[var(--line)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-soft)]">
+      <Eyebrow text="Dos capas" />
+      <h2 class="font-display mt-4 text-4xl font-semibold leading-tight text-[var(--text-100)]">Presupuesto y ubicacion no son lo mismo. Y eso esta bien.</h2>
+      <p class="mt-4 text-sm leading-7 text-[var(--text-300)] md:text-base">
+        Mucha gente mezcla dinero disponible con dinero asignado y termina revisando varias notas, bancos y hojas de calculo a la vez. Finance separa ambas cosas para que puedas mirar con claridad cual es el destino del dinero y en que soporte sigue guardado.
+      </p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <RailCard item={rails[0]} label="Intencion" variant="surface" />
+      <RailCard item={rails[1]} label="Ubicacion" variant="white" />
+    </div>
+  </div>
+</section>

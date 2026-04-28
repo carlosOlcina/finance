@@ -1,0 +1,21 @@
+---
+import type { RailItem } from '../../../data/landingContent';
+import Eyebrow from '../atoms/Eyebrow.astro';
+
+interface Props {
+  item: RailItem;
+  label: string;
+  variant?: 'surface' | 'white';
+}
+
+const { item, label, variant = 'surface' } = Astro.props;
+
+const surfaceClass =
+  variant === 'surface' ? 'bg-[var(--surface-900)]' : 'bg-white/72';
+---
+
+<article class={`rounded-[1.8rem] border border-[var(--line)] p-6 shadow-[var(--shadow-soft)] backdrop-blur ${surfaceClass}`}>
+  <Eyebrow text={label} tone="muted" />
+  <h3 class="font-display mt-4 text-3xl font-semibold leading-tight text-[var(--text-100)]">{item.title}</h3>
+  <p class="mt-4 text-sm leading-7 text-[var(--text-300)]">{item.body}</p>
+</article>

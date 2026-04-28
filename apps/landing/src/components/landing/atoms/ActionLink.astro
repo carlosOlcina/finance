@@ -1,0 +1,48 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'outline' | 'surface' | 'dark' | 'dark-outline';
+  size?: 'default' | 'compact';
+  external?: boolean;
+  className?: string;
+}
+
+const {
+  href,
+  label,
+  variant = 'outline',
+  size = 'default',
+  external = false,
+  className = '',
+} = Astro.props;
+
+const variantClasses = {
+  primary:
+    'inline-flex items-center rounded-full bg-[var(--accent)] font-semibold text-[var(--surface-900)] transition hover:bg-[var(--accent-strong)]',
+  outline:
+    'inline-flex items-center rounded-full border border-[var(--line)] bg-white/55 font-semibold text-[var(--text-100)] transition hover:border-[var(--line-strong)] hover:bg-white',
+  surface:
+    'inline-flex items-center rounded-full border border-[var(--line)] bg-[var(--surface-900)] font-semibold text-[var(--text-100)] transition hover:border-[var(--line-strong)] hover:bg-white',
+  dark:
+    'inline-flex items-center rounded-full bg-[var(--surface-900)] font-semibold text-[var(--text-100)] transition hover:bg-white',
+  'dark-outline':
+    'inline-flex items-center rounded-full border border-white/16 font-semibold text-[var(--surface-900)] transition hover:bg-white/8',
+} as const;
+
+const sizeClasses = {
+  default: 'px-5 py-3 text-sm',
+  compact: 'px-3 py-1 text-xs',
+} as const;
+
+const classes = `${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noreferrer' : undefined}
+  class={classes}
+>
+  {label}
+</a>

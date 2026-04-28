@@ -1,0 +1,19 @@
+---
+import ActionLink from '../atoms/ActionLink.astro';
+
+interface Props {
+  repoUrl: string;
+}
+
+const { repoUrl } = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-6">
+  <div class="flex items-center justify-between gap-4 rounded-full border border-[var(--line)] bg-white/70 px-5 py-3 shadow-[var(--shadow-soft)] backdrop-blur">
+    <div>
+      <p class="font-mono-display text-[11px] font-semibold tracking-[0.28em] text-[var(--accent)] uppercase">Finance / open source</p>
+      <p class="mt-1 text-xs text-[var(--text-300)]">Gestion personal del dinero con huchas, medios separados y reglas simples.</p>
+    </div>
+    <ActionLink href={repoUrl} label="Ver repositorio" variant="surface" external />
+  </div>
+</section>

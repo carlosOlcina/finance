@@ -1,0 +1,20 @@
+---
+import type { HeroSplitItem } from '../../../data/landingContent';
+
+interface Props {
+  item: HeroSplitItem;
+  variant?: 'surface' | 'light';
+}
+
+const { item, variant = 'surface' } = Astro.props;
+
+const variantClass =
+  variant === 'surface'
+    ? 'border-[var(--line)] bg-[var(--surface-900)]'
+    : 'border-[rgba(82,63,45,0.1)] bg-white/65';
+---
+
+<div class={`flex items-center justify-between rounded-full border px-4 py-2.5 text-sm text-[var(--text-200)] ${variantClass}`}>
+  <span>{item.name}</span>
+  <strong>{item.value}</strong>
+</div>

@@ -1,0 +1,18 @@
+---
+import type { PillarItem } from '../../../data/landingContent';
+import PillarCard from '../molecules/PillarCard.astro';
+
+interface Props {
+  pillars: PillarItem[];
+}
+
+const { pillars } = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
+  <div class="grid gap-5 lg:grid-cols-3">
+    {pillars.map((item) => (
+      <PillarCard item={item} />
+    ))}
+  </div>
+</section>

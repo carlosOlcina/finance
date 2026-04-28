@@ -1,0 +1,22 @@
+---
+interface Props {
+  label: string;
+  variant?: 'badge' | 'soft' | 'accent';
+  className?: string;
+}
+
+const { label, variant = 'soft', className = '' } = Astro.props;
+
+const variantClasses = {
+  badge:
+    'inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/65 px-3 py-1.5 text-[11px] uppercase tracking-[0.28em] text-[var(--text-300)] shadow-[0_12px_30px_rgba(92,67,40,0.06)]',
+  soft:
+    'rounded-full border border-[var(--line)] bg-white/55 px-3 py-1.5 text-sm text-[var(--text-300)]',
+  accent:
+    'rounded-full border border-[rgba(18,76,58,0.12)] bg-white/60 px-4 py-2 text-sm text-[var(--text-200)]',
+} as const;
+
+const classes = `${variantClasses[variant]} ${className}`.trim();
+---
+
+<span class={classes}>{label}</span>

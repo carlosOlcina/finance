@@ -1,0 +1,40 @@
+---
+interface Props {
+  text: string;
+  tone?:
+    | 'accent'
+    | 'accent-strong'
+    | 'highlight'
+    | 'muted'
+    | 'muted-strong'
+    | 'inverse';
+  size?: 'default' | 'compact';
+  className?: string;
+}
+
+const { text, tone = 'accent', size = 'default', className = '' } = Astro.props;
+
+const toneClasses = {
+  accent:
+    'font-mono-display uppercase text-[var(--accent)]',
+  'accent-strong':
+    'font-mono-display uppercase text-[var(--accent-strong)]',
+  highlight:
+    'font-mono-display uppercase text-[var(--highlight)]',
+  muted:
+    'font-mono-display uppercase text-[var(--text-300)]',
+  'muted-strong':
+    'font-mono-display uppercase text-[var(--text-200)]',
+  inverse:
+    'font-mono-display uppercase text-[rgba(255,250,242,0.68)]',
+} as const;
+
+const sizeClasses = {
+  default: 'text-xs tracking-[0.28em]',
+  compact: 'text-[11px] tracking-[0.24em]',
+} as const;
+
+const classes = `${toneClasses[tone]} ${sizeClasses[size]} ${className}`.trim();
+---
+
+<p class={classes}>{text}</p>

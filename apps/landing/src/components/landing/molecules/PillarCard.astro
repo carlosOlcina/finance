@@ -1,0 +1,16 @@
+---
+import type { PillarItem } from '../../../data/landingContent';
+import Eyebrow from '../atoms/Eyebrow.astro';
+
+interface Props {
+  item: PillarItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="rounded-[1.9rem] border border-[var(--line)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-soft)] backdrop-blur">
+  <Eyebrow text={item.eyebrow} tone="highlight" />
+  <h2 class="font-display mt-4 text-3xl font-semibold leading-tight text-[var(--text-100)]">{item.title}</h2>
+  <p class="mt-4 text-sm leading-7 text-[var(--text-300)]">{item.body}</p>
+</article>

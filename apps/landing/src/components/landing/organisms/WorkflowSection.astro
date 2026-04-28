@@ -1,0 +1,31 @@
+---
+import type { WorkflowItem } from '../../../data/landingContent';
+import Eyebrow from '../atoms/Eyebrow.astro';
+import WorkflowStep from '../molecules/WorkflowStep.astro';
+
+interface Props {
+  workflow: WorkflowItem[];
+}
+
+const { workflow } = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
+  <div class="rounded-[2.3rem] border border-[var(--line)] bg-white/60 p-6 shadow-[var(--shadow-soft)] backdrop-blur md:p-8">
+    <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+      <div>
+        <Eyebrow text="Como funciona" />
+        <h2 class="font-display mt-4 text-4xl font-semibold leading-tight text-[var(--text-100)] md:text-5xl">Ordena primero el significado del dinero. El numero va despues.</h2>
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-300)] md:text-base">
+          La idea de Finance no es automatizar tu banco: es ayudarte a pensar mejor cada entrada y cada salida. Primero decides que apartados existen, despues como se alimentan y por ultimo desde donde pagas realmente.
+        </p>
+      </div>
+
+      <ol class="space-y-3 text-sm leading-7 text-[var(--text-300)]">
+        {workflow.map((item) => (
+          <WorkflowStep item={item} />
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
