@@ -1,0 +1,40 @@
+{
+  "name": "landing",
+  "root": "apps/landing",
+  "sourceRoot": "apps/landing/src",
+  "projectType": "application",
+  "tags": ["type:app", "scope:web"],
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "apps/landing",
+        "command": "pnpm dev"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.vercel/output"],
+      "options": {
+        "cwd": "apps/landing",
+        "command": "pnpm build"
+      }
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "apps/landing",
+        "command": "pnpm preview"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/landing",
+        "command": "pnpm check"
+      }
+    }
+  }
+}

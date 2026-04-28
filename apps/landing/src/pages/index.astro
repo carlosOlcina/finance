@@ -1,0 +1,156 @@
+---
+import YieldPlanner from '../components/react/YieldPlanner';
+import MainLayout from '../layouts/MainLayout.astro';
+
+const signals = [
+  { label: 'Deploys globales', value: '<120 ms' },
+  { label: 'Tiempo hasta first paint', value: '0.6 s' },
+  { label: 'Islands hidratadas', value: '1 panel' },
+];
+
+const capabilities = [
+  {
+    title: 'Liquidez coreografiada',
+    body: 'Automatiza barridos, thresholds de caja y ventanas de inversión desde una sola vista pensada para CFOs y founders.',
+  },
+  {
+    title: 'Interactividad donde importa',
+    body: 'La shell se renderiza con Astro y solo las simulaciones y acciones tácticas despiertan React en el navegador.',
+  },
+  {
+    title: 'Salida lista para Vercel',
+    body: 'El build conserva un flujo estático para la landing y deja preparada la adaptación oficial de Astro para el despliegue.',
+  },
+];
+
+const timeline = [
+  'Board-ready reporting en minutos, no al cierre de mes.',
+  'Arquitectura manual de Nx, sin dependencia de plugins Astro de Nx.',
+  'Tailwind 4 a través del plugin de Vite recomendado por Astro.',
+];
+---
+
+<MainLayout
+  title="Atlas Finance | Landing con Astro, React, Tailwind y Vercel"
+  description="Landing financiera creada manualmente en Nx con Astro, React islands, Tailwind 4 y adapter de Vercel."
+>
+  <main class="pb-16 pt-6 md:pb-24 md:pt-10">
+    <section class="mx-auto max-w-6xl px-6">
+      <div class="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur">
+        <div>
+          <p class="text-sm font-semibold tracking-[0.24em] text-white uppercase">Atlas Finance</p>
+          <p class="mt-1 text-xs text-[var(--text-300)]">Astro shell, React islands, Tailwind 4 y Vercel adapter.</p>
+        </div>
+        <a
+          href="#simulador"
+          class="inline-flex items-center rounded-full border border-white/10 bg-white/8 px-4 py-2 text-sm text-white transition hover:border-white/20 hover:bg-white/12"
+        >
+          Probar demo
+        </a>
+      </div>
+    </section>
+
+    <section class="mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:pb-20 lg:pt-16">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[rgba(10,18,31,0.75)] px-3 py-1.5 text-[11px] uppercase tracking-[0.28em] text-[var(--text-300)]">
+          Implementación manual en Nx
+        </div>
+        <h1 class="mt-6 max-w-4xl text-5xl font-semibold tracking-[-0.04em] text-white md:text-7xl">
+          La tesorería de tu startup, sin el peso visual ni técnico de un stack heredado.
+        </h1>
+        <p class="mt-6 max-w-2xl text-base leading-8 text-[var(--text-300)] md:text-lg">
+          Esta landing usa Astro para entregar una experiencia ultrarrápida, React para las zonas interactivas, Tailwind para el sistema visual y el adapter oficial de Vercel para publicar sin acoplar Astro a un plugin de Nx.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#simulador"
+            class="inline-flex items-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-[#89f4ce]"
+          >
+            Abrir simulador
+          </a>
+          <a
+            href="#arquitectura"
+            class="inline-flex items-center rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/20 hover:bg-white/5"
+          >
+            Ver arquitectura
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          {signals.map((signal) => (
+            <article class="rounded-[1.5rem] border border-white/10 bg-[rgba(10,17,29,0.78)] p-4 backdrop-blur">
+              <p class="text-xs uppercase tracking-[0.18em] text-[var(--text-300)]">{signal.label}</p>
+              <p class="mt-4 text-3xl font-semibold text-white">{signal.value}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <aside class="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.38)] backdrop-blur">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="font-mono-display text-xs uppercase tracking-[0.24em] text-[var(--accent)]">Treasury pulse</p>
+            <h2 class="mt-3 text-2xl font-semibold text-white">Un panel editorial, no una demo genérica.</h2>
+          </div>
+          <div class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-[var(--text-300)]">Static output</div>
+        </div>
+
+        <div class="mt-8 space-y-4">
+          <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+            <p class="text-sm text-[var(--text-300)]">Stack</p>
+            <p class="mt-2 text-lg font-semibold text-white">Astro + React + Tailwind + Vercel</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+            <p class="text-sm text-[var(--text-300)]">Foco</p>
+            <p class="mt-2 text-lg font-semibold text-white">Conversión, claridad narrativa y zero wasted JS.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+            <p class="text-sm text-[var(--text-300)]">Delivery</p>
+            <p class="mt-2 text-lg font-semibold text-white">Targets manuales de Nx con run-commands y outputs cacheables.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="simulador" class="mx-auto max-w-6xl px-6 py-6 md:py-10">
+      <YieldPlanner client:load />
+    </section>
+
+    <section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
+      <div class="grid gap-5 lg:grid-cols-3">
+        {capabilities.map((item) => (
+          <article class="rounded-[1.75rem] border border-white/10 bg-[rgba(10,17,29,0.7)] p-6 backdrop-blur">
+            <p class="font-mono-display text-xs uppercase tracking-[0.24em] text-[var(--highlight)]">{item.title}</p>
+            <p class="mt-4 text-sm leading-7 text-[var(--text-300)]">{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="arquitectura" class="mx-auto max-w-6xl px-6 py-10 md:py-14">
+      <div class="rounded-[2rem] border border-white/10 bg-[rgba(255,255,255,0.04)] p-6 md:p-8">
+        <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+          <div>
+            <p class="font-mono-display text-xs uppercase tracking-[0.28em] text-[var(--accent)]">Arquitectura</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Un proyecto Astro integrado a Nx sin usar un plugin Nx de Astro.</h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-300)] md:text-base">
+              La app vive en apps/landing, define sus scripts nativos de Astro y los expone a Nx mediante project.json con run-commands. Así mantienes el control del stack frontend sin renunciar a los targets, la caché y el grafo del monorepo.
+            </p>
+          </div>
+
+          <ol class="space-y-3 text-sm leading-7 text-[var(--text-300)]">
+            {timeline.map((item, index) => (
+              <li class="flex gap-4 rounded-2xl border border-white/10 bg-black/20 p-4">
+                <span class="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[rgba(112,240,194,0.12)] text-xs font-semibold text-[var(--accent)]">
+                  {index + 1}
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>

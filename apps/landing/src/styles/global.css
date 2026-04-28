@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+  --surface-950: #07111f;
+  --surface-900: #0b1526;
+  --surface-800: rgba(14, 25, 45, 0.82);
+  --surface-700: rgba(23, 39, 68, 0.9);
+  --line: rgba(166, 193, 255, 0.18);
+  --text-100: #f4f7fb;
+  --text-300: #b7c5df;
+  --accent: #70f0c2;
+  --accent-strong: #2dd4bf;
+  --highlight: #f6b56a;
+}
+
+html {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(45, 212, 191, 0.14), transparent 28%),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(246, 181, 106, 0.16),
+      transparent 18%
+    ),
+    linear-gradient(180deg, #07111f 0%, #02060d 100%);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-100);
+  font-family: 'Sora', sans-serif;
+}
+
+::selection {
+  background: rgba(112, 240, 194, 0.25);
+  color: var(--text-100);
+}
+
+.font-mono-display {
+  font-family: 'IBM Plex Mono', monospace;
+}
