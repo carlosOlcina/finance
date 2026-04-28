@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title,
-  description = 'Landing de finanzas construida con Astro, React, Tailwind y desplegada en Vercel.',
+  description = 'Finance es una app open source para repartir tu dinero en huchas, registrar gastos por apartado y controlar cuanto tienes en cada cuenta o en efectivo.',
 } = Astro.props;
 ---
 
@@ -19,14 +19,17 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#fffaf2" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-[var(--surface-950)] text-[var(--text-100)] antialiased">
     <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div class="absolute left-[-12rem] top-24 h-80 w-80 rounded-full bg-[rgba(45,212,191,0.16)] blur-3xl"></div>
-      <div class="absolute right-[-8rem] top-[-2rem] h-72 w-72 rounded-full bg-[rgba(246,181,106,0.18)] blur-3xl"></div>
-      <div class="absolute bottom-[-10rem] left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-[rgba(79,70,229,0.12)] blur-3xl"></div>
+      <div class="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(255,255,255,0.55),rgba(255,255,255,0))]"></div>
+      <div class="absolute left-[-10rem] top-16 h-[26rem] w-[26rem] rounded-full bg-[rgba(203,123,71,0.14)] blur-3xl"></div>
+      <div class="absolute right-[-8rem] top-[-3rem] h-[24rem] w-[24rem] rounded-full bg-[rgba(31,106,82,0.16)] blur-3xl"></div>
+      <div class="absolute bottom-[-8rem] left-1/2 h-[18rem] w-[48rem] -translate-x-1/2 rounded-full bg-[rgba(142,107,73,0.12)] blur-3xl"></div>
+      <div class="absolute inset-x-6 top-6 h-[calc(100%-3rem)] rounded-[2rem] border border-[var(--line)] bg-white/22"></div>
     </div>
     <slot />
   </body>
