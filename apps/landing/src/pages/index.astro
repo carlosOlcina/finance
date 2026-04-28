@@ -1,94 +1,23 @@
 ---
+import HeroSection from '../components/landing/organisms/HeroSection.astro';
+import OpenSourceSection from '../components/landing/organisms/OpenSourceSection.astro';
+import PillarsSection from '../components/landing/organisms/PillarsSection.astro';
+import RailsSection from '../components/landing/organisms/RailsSection.astro';
+import TopStrip from '../components/landing/organisms/TopStrip.astro';
+import WorkflowSection from '../components/landing/organisms/WorkflowSection.astro';
 import YieldPlanner from '../components/react/YieldPlanner';
+import {
+  heroBuckets,
+  heroMethods,
+  markers,
+  openSourceNotes,
+  pillars,
+  rails,
+  releasesUrl,
+  repoUrl,
+  workflow,
+} from '../data/landingContent';
 import MainLayout from '../layouts/MainLayout.astro';
-
-const repoUrl = 'https://github.com/carlosOlcina/finance';
-const releasesUrl = `${repoUrl}/releases`;
-
-const markers = [
-  {
-    label: 'Reglas de entrada',
-    value: 'Mixtas',
-    detail: 'Porcentajes, importes fijos y resto libre conviviendo en la misma vista.',
-  },
-  {
-    label: 'Medios separados',
-    value: '3 capas',
-    detail: 'Cuenta principal, tarjeta diaria y efectivo sin mezclar el destino del dinero.',
-  },
-  {
-    label: 'Promesa',
-    value: 'Simple',
-    detail: 'Sin integraciones bancarias ni contabilidad pesada: un excel automatico y mucho mas claro.',
-  },
-];
-
-const pillars = [
-  {
-    eyebrow: 'Huchas con criterio',
-    title: 'Cada entrada aterriza con un reparto definido.',
-    body: 'Finance reparte el dinero entre inversion, quedadas, reserva o cualquier apartado que decidas. Puedes mezclar porcentajes e importes fijos sin inventarte formulas nuevas cada mes.',
-  },
-  {
-    eyebrow: 'Gasto con destino',
-    title: 'Cada movimiento consume una hucha concreta.',
-    body: 'Una cena no baja de un total abstracto: baja de Quedadas. Asi entiendes que partidas se estan agotando y cuales siguen intactas antes de abrir el banco.',
-  },
-  {
-    eyebrow: 'Dinero localizado',
-    title: 'Sabes para que es y tambien donde esta.',
-    body: 'La app separa el sentido del dinero de su ubicacion. Puedes mirar tus huchas y, al mismo tiempo, ver cuanto sigue en cuenta, tarjeta o efectivo.',
-  },
-];
-
-const workflow = [
-  {
-    step: '01',
-    title: 'Crea tus apartados',
-    body: 'Inversion, quedadas, colchon, vacaciones o lo que necesites. Cada apartado representa una intencion real, no una etiqueta decorativa.',
-  },
-  {
-    step: '02',
-    title: 'Define como entra el dinero',
-    body: 'Decide que porcentajes se reparten automaticamente, que cantidades son fijas y cuanto queda libre para improvisar sin perder el control.',
-  },
-  {
-    step: '03',
-    title: 'Atribuye cada gasto y cada medio',
-    body: 'Cuando pagas algo eliges de que hucha sale y con que medio lo haces. Finance actualiza ambas capas a la vez.',
-  },
-];
-
-const heroBuckets = [
-  { name: 'Colchon', value: '22%' },
-  { name: 'Inversion', value: '14%' },
-  { name: 'Quedadas', value: '140 EUR' },
-  { name: 'Movilidad', value: '90 EUR' },
-  { name: 'Libre', value: 'Resto' },
-];
-
-const heroMethods = [
-  { name: 'Cuenta principal', value: '55%' },
-  { name: 'Tarjeta diaria', value: '30%' },
-  { name: 'Efectivo', value: '15%' },
-];
-
-const rails = [
-  {
-    title: 'Las huchas responden a una pregunta: para que es este dinero.',
-    body: 'Aqui viven tus objetivos y tus limites. Una hucha puede ser ahorro, otra ocio y otra un gasto fijo. Lo importante es que cada euro tenga intencion antes de salir.',
-  },
-  {
-    title: 'Los medios responden a otra: donde esta ahora mismo.',
-    body: 'Cuenta bancaria, tarjeta o efectivo. Finance mantiene esa capa separada para que el saldo real y el presupuesto convivan sin pisarse.',
-  },
-];
-
-const openSourceNotes = [
-  'Proyecto completamente open source, pensado para evolucionar en publico.',
-  'Instalacion prevista desde GitHub y distribucion del APK mediante releases.',
-  'Sin sincronizacion bancaria: el foco es darte claridad, no prometer automatismos dudosos.',
-];
 ---
 
 <MainLayout
@@ -96,239 +25,22 @@ const openSourceNotes = [
   description="Finance es una app open source para repartir tu dinero en huchas, registrar gastos por apartados y controlar cuentas bancarias y efectivo desde la misma vista."
 >
   <main class="pb-16 pt-6 md:pb-24 md:pt-10">
-    <section class="mx-auto max-w-6xl px-6">
-      <div class="flex items-center justify-between gap-4 rounded-full border border-[var(--line)] bg-white/70 px-5 py-3 shadow-[var(--shadow-soft)] backdrop-blur">
-        <div>
-          <p class="font-mono-display text-[11px] font-semibold tracking-[0.28em] text-[var(--accent)] uppercase">Finance / open source</p>
-          <p class="mt-1 text-xs text-[var(--text-300)]">Gestion personal del dinero con huchas, medios separados y reglas simples.</p>
-        </div>
-        <a
-          href={repoUrl}
-          target="_blank"
-          rel="noreferrer"
-          class="inline-flex items-center rounded-full border border-[var(--line)] bg-[var(--surface-900)] px-4 py-2 text-sm font-semibold text-[var(--text-100)] transition hover:border-[var(--line-strong)] hover:bg-white"
-        >
-          Ver repositorio
-        </a>
-      </div>
-    </section>
-
-    <section class="mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:pb-20 lg:pt-16">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/65 px-3 py-1.5 text-[11px] uppercase tracking-[0.28em] text-[var(--text-300)] shadow-[0_12px_30px_rgba(92,67,40,0.06)]">
-          Open source / APK en GitHub
-        </div>
-        <h1 class="font-display mt-6 max-w-4xl text-5xl font-semibold leading-[0.94] tracking-[-0.05em] text-[var(--text-100)] md:text-7xl">
-          Tu dinero deja de ser un numero y empieza a tener destino.
-        </h1>
-        <p class="mt-6 max-w-2xl text-base leading-8 text-[var(--text-200)] md:text-lg">
-          Finance convierte cada entrada en un sistema claro de huchas: inversion, quedadas, colchon o lo que tu definas. Reparte por porcentajes y cantidades fijas, descuenta cada gasto desde una hucha concreta y mira cuanto queda en cada cuenta o en efectivo sin conectar ningun banco.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={repoUrl}
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-[var(--surface-900)] transition hover:bg-[var(--accent-strong)]"
-          >
-            Ver el repositorio
-          </a>
-          <a
-            href="#demo"
-            class="inline-flex items-center rounded-full border border-[var(--line)] bg-white/55 px-5 py-3 text-sm font-semibold text-[var(--text-100)] transition hover:border-[var(--line-strong)] hover:bg-white"
-          >
-            Ver la demo
-          </a>
-        </div>
-
-        <div class="mt-5 flex flex-wrap gap-3 text-sm text-[var(--text-300)]">
-          <span class="rounded-full border border-[var(--line)] bg-white/55 px-3 py-1.5">Sin integraciones bancarias</span>
-          <span class="rounded-full border border-[var(--line)] bg-white/55 px-3 py-1.5">Hecha para uso diario</span>
-          <span class="rounded-full border border-[var(--line)] bg-white/55 px-3 py-1.5">Distribucion desde GitHub Releases</span>
-        </div>
-
-        <div class="mt-10 grid gap-4 sm:grid-cols-3">
-          {markers.map((marker) => (
-            <article class="rounded-[1.7rem] border border-[var(--line)] bg-[var(--surface-card)] p-5 shadow-[var(--shadow-soft)] backdrop-blur">
-              <p class="text-xs uppercase tracking-[0.18em] text-[var(--text-300)]">{marker.label}</p>
-              <p class="mt-4 text-3xl font-semibold text-[var(--text-100)]">{marker.value}</p>
-              <p class="mt-3 text-sm leading-6 text-[var(--text-300)]">{marker.detail}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      <aside class="relative lg:pt-8">
-        <div class="absolute -left-4 top-16 hidden h-24 w-24 rounded-full border border-[var(--line)] bg-white/45 lg:block"></div>
-        <div class="relative overflow-hidden rounded-[2.2rem] border border-[var(--line)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-soft)] backdrop-blur lg:p-7">
-        <div class="flex items-center justify-between">
-          <div>
-            <p class="font-mono-display text-xs uppercase tracking-[0.24em] text-[var(--accent)]">Vista editorial</p>
-            <h2 class="font-display mt-3 text-3xl font-semibold leading-tight text-[var(--text-100)]">Un excel automatico, pero con mucho mejor criterio visual.</h2>
-          </div>
-          <a
-            href={releasesUrl}
-            target="_blank"
-            rel="noreferrer"
-            class="rounded-full border border-[var(--line)] bg-white/75 px-3 py-1 text-xs font-semibold text-[var(--text-100)] transition hover:bg-white"
-          >
-            APK
-          </a>
-        </div>
-
-        <p class="mt-5 max-w-xl text-sm leading-7 text-[var(--text-300)]">
-          Sin sincronizaciones opacas ni automatismos inflados. Solo una estructura clara para repartir entradas, registrar gastos con contexto y saber donde sigue el dinero en cada momento.
-        </p>
-
-        <div class="mt-8 grid gap-4 md:grid-cols-[1.05fr_0.95fr]">
-          <div class="rounded-[1.8rem] border border-[var(--line)] bg-white p-5 shadow-[0_18px_40px_rgba(92,67,40,0.08)] md:rotate-[-2deg]">
-            <p class="font-mono-display text-[11px] uppercase tracking-[0.24em] text-[var(--text-300)]">Entrada general</p>
-            <p class="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--text-100)]">1.650 EUR</p>
-            <div class="mt-5 space-y-3">
-              {heroBuckets.map((bucket) => (
-                <div class="flex items-center justify-between rounded-full border border-[var(--line)] bg-[var(--surface-900)] px-4 py-2.5 text-sm text-[var(--text-200)]">
-                  <span>{bucket.name}</span>
-                  <strong>{bucket.value}</strong>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <div class="rounded-[1.8rem] border border-[var(--line)] bg-[var(--accent-soft)] p-5">
-              <p class="font-mono-display text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">Gasto atribuido</p>
-              <p class="mt-3 text-lg font-semibold text-[var(--text-100)]">Cena del viernes</p>
-              <div class="mt-4 space-y-2 text-sm text-[var(--text-200)]">
-                <div class="rounded-full border border-[rgba(18,76,58,0.12)] bg-white/60 px-4 py-2">Sale de Quedadas</div>
-                <div class="rounded-full border border-[rgba(18,76,58,0.12)] bg-white/60 px-4 py-2">Pagado con Tarjeta diaria</div>
-              </div>
-            </div>
-
-            <div class="rounded-[1.8rem] border border-[var(--line)] bg-[var(--highlight-soft)] p-5 md:rotate-[2deg]">
-              <p class="font-mono-display text-[11px] uppercase tracking-[0.24em] text-[var(--text-200)]">Donde esta el dinero</p>
-              <div class="mt-4 space-y-3">
-                {heroMethods.map((method) => (
-                  <div class="flex items-center justify-between rounded-full border border-[rgba(82,63,45,0.1)] bg-white/65 px-4 py-2.5 text-sm text-[var(--text-200)]">
-                    <span>{method.name}</span>
-                    <strong>{method.value}</strong>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
-      <div class="grid gap-5 lg:grid-cols-3">
-        {pillars.map((item) => (
-          <article class="rounded-[1.9rem] border border-[var(--line)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-soft)] backdrop-blur">
-            <p class="font-mono-display text-xs uppercase tracking-[0.24em] text-[var(--highlight)]">{item.eyebrow}</p>
-            <h2 class="font-display mt-4 text-3xl font-semibold leading-tight text-[var(--text-100)]">{item.title}</h2>
-            <p class="mt-4 text-sm leading-7 text-[var(--text-300)]">{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
-      <div class="rounded-[2.3rem] border border-[var(--line)] bg-white/60 p-6 shadow-[var(--shadow-soft)] backdrop-blur md:p-8">
-        <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-          <div>
-            <p class="font-mono-display text-xs uppercase tracking-[0.28em] text-[var(--accent)]">Como funciona</p>
-            <h2 class="font-display mt-4 text-4xl font-semibold leading-tight text-[var(--text-100)] md:text-5xl">Ordena primero el significado del dinero. El numero va despues.</h2>
-            <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-300)] md:text-base">
-              La idea de Finance no es automatizar tu banco: es ayudarte a pensar mejor cada entrada y cada salida. Primero decides que apartados existen, despues como se alimentan y por ultimo desde donde pagas realmente.
-            </p>
-          </div>
-
-          <ol class="space-y-3 text-sm leading-7 text-[var(--text-300)]">
-            {workflow.map((item) => (
-              <li class="flex gap-4 rounded-[1.7rem] border border-[var(--line)] bg-[var(--surface-900)] p-5">
-                <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent-soft)] text-xs font-semibold text-[var(--accent-strong)]">
-                  {item.step}
-                </span>
-                <span>
-                  <strong class="block text-base text-[var(--text-100)]">{item.title}</strong>
-                  <span class="mt-1.5 block">{item.body}</span>
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
+    <TopStrip repoUrl={repoUrl} />
+    <HeroSection
+      repoUrl={repoUrl}
+      releasesUrl={releasesUrl}
+      markers={markers}
+      heroBuckets={heroBuckets}
+      heroMethods={heroMethods}
+    />
+    <PillarsSection pillars={pillars} />
+    <WorkflowSection workflow={workflow} />
 
     <section id="demo" class="mx-auto max-w-6xl px-6 py-10 md:py-14">
       <YieldPlanner client:visible />
     </section>
 
-    <section class="mx-auto max-w-6xl px-6 py-10 md:py-14">
-      <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div class="rounded-[2rem] border border-[var(--line)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-soft)]">
-          <p class="font-mono-display text-xs uppercase tracking-[0.28em] text-[var(--accent)]">Dos capas</p>
-          <h2 class="font-display mt-4 text-4xl font-semibold leading-tight text-[var(--text-100)]">Presupuesto y ubicacion no son lo mismo. Y eso esta bien.</h2>
-          <p class="mt-4 text-sm leading-7 text-[var(--text-300)] md:text-base">
-            Mucha gente mezcla dinero disponible con dinero asignado y termina revisando varias notas, bancos y hojas de calculo a la vez. Finance separa ambas cosas para que puedas mirar con claridad cual es el destino del dinero y en que soporte sigue guardado.
-          </p>
-        </div>
-
-        <div class="grid gap-4 md:grid-cols-2">
-          {rails.map((item, index) => (
-            <article class="rounded-[1.8rem] border border-[var(--line)] p-6 shadow-[var(--shadow-soft)] backdrop-blur" class:list={{ 'bg-[var(--surface-900)]': index === 0, 'bg-white/72': index === 1 }}>
-              <p class="font-mono-display text-xs uppercase tracking-[0.24em] text-[var(--text-300)]">{index === 0 ? 'Intencion' : 'Ubicacion'}</p>
-              <h3 class="font-display mt-4 text-3xl font-semibold leading-tight text-[var(--text-100)]">{item.title}</h3>
-              <p class="mt-4 text-sm leading-7 text-[var(--text-300)]">{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-6xl px-6 py-10 md:py-16">
-      <div class="rounded-[2.5rem] bg-[var(--text-100)] px-6 py-8 text-[var(--surface-900)] shadow-[0_28px_80px_rgba(51,36,20,0.16)] md:px-8 md:py-10">
-        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-          <div>
-            <p class="font-mono-display text-xs uppercase tracking-[0.28em] text-[rgba(255,250,242,0.68)]">Open source / distribucion</p>
-            <h2 class="font-display mt-4 text-4xl font-semibold leading-tight md:text-5xl">El proyecto quiere vivir a plena vista: codigo abierto, instalacion clara y cero humo.</h2>
-            <p class="mt-4 max-w-2xl text-sm leading-7 text-[rgba(255,250,242,0.78)] md:text-base">
-              Finance nacio para resolver un problema cotidiano de forma directa. El repositorio publico sera el centro de documentacion y colaboracion, y la instalacion en Android se apoyara en el APK publicado en GitHub.
-            </p>
-          </div>
-
-          <div>
-            <div class="space-y-3">
-              {openSourceNotes.map((item) => (
-                <div class="rounded-[1.5rem] border border-white/12 bg-white/6 px-4 py-4 text-sm leading-7 text-[rgba(255,250,242,0.78)]">
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noreferrer"
-                class="inline-flex items-center rounded-full bg-[var(--surface-900)] px-5 py-3 text-sm font-semibold text-[var(--text-100)] transition hover:bg-white"
-              >
-                Ver el repositorio
-              </a>
-              <a
-                href={releasesUrl}
-                target="_blank"
-                rel="noreferrer"
-                class="inline-flex items-center rounded-full border border-white/16 px-5 py-3 text-sm font-semibold text-[var(--surface-900)] transition hover:bg-white/8"
-              >
-                Ver releases
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <RailsSection rails={rails} />
+    <OpenSourceSection repoUrl={repoUrl} releasesUrl={releasesUrl} notes={openSourceNotes} />
   </main>
 </MainLayout>
