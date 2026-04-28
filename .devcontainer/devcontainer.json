@@ -9,12 +9,12 @@
     "ghcr.io/devcontainers-extra/features/expo-cli:1": {},
     "ghcr.io/devcontainers-extra/features/gradle-sdkman:2": {},
     "ghcr.io/devcontainers-extra/features/nx-npm:1": {},
+    "ghcr.io/devcontainers-extra/features/springboot-sdkman:2.0.17": {},
     "ghcr.io/devcontainers-extra/features/pnpm:2": {}
   },
 
   "forwardPorts": [3000, 4321],
 
-  // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "pnpm install",
 
   "customizations": {
@@ -26,7 +26,9 @@
         "msjsdiag.vscode-react-native",
         "expo.vscode-expo-tools",
         "astro-build.astro-vscode",
-        "vscjava.vscode-java-pack"
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "ms-ossdata.vscode-pgsql"
       ]
     }
   }
